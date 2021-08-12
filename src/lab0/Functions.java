@@ -17,19 +17,19 @@ public class Functions {
 		return (Curso) valorSelecionado;	
 	}
 	
-	public boolean verifica_alunos() {
+	public boolean alunos_vazios() {
 		if (database.get_lista_alunos().size() == 0) {
 			return true;
 		}return false;
 		}
 	
-	public boolean verifica_cursos() {
+	public boolean cursos_vazios() {
 		if (database.get_lista_cursos().size() == 0) {
 			return true;
 		}return false;
 	}
 	
-	public boolean verifica_disciplinas() {
+	public boolean disciplinas_vazias() {
 		if (database.get_lista_disciplinas().size() == 0) {
 			return true;
 		}return false;
@@ -53,6 +53,24 @@ public class Functions {
 	
 	public void addDisciplina(Disciplina _d) {
 		database.get_lista_disciplinas().add(_d);
+	}
+	
+	public Aluno logar(int mat, String senha){
+		for (Aluno a : database.get_lista_alunos()) {
+			if (a.getMatricula() == mat && a.getSenha() == senha) {
+				return a;
+			}
+		}
+		return null;
+		
+	}
+	
+	public boolean verifica_curso(int _id) {
+		for (Curso c : database.get_lista_cursos()) {
+			if (c.getId() == _id) {
+				return true;
+			}
+		}return false;
 	}
 	
 	

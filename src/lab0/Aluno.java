@@ -6,12 +6,14 @@ public class Aluno {
 	
 	private String nome;
 	private int mat;
+	private String senha;
 	private Curso curso;
 	private ArrayList<Comentario> lista_comentarios = new ArrayList<Comentario>();
 	
-	public Aluno(String nome, int mat, Curso curso) {
+	public Aluno(String nome, int mat, String senha, Curso curso) {
 		this.nome = nome;
 		this.mat = mat;
+		this.senha = senha;
 		this.curso = curso;		
 	}
 	
@@ -29,6 +31,14 @@ public class Aluno {
 	
 	public void setMatricula(int _mat) {
 		this.mat = _mat;
+	}
+	
+	public String getSenha() {
+		return this.senha;
+	}
+	
+	public void setSenha(String _s) {
+		this.senha = _s;
 	}
 	
 	public Curso getCurso() {

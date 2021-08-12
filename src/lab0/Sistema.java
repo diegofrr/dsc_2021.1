@@ -11,19 +11,40 @@ public class Sistema {
 		
 		if (op == 0) {
 			JOptionPane.showMessageDialog(null, "CLICOU EM LOGAR");
+			int _mat = Integer.parseInt(JOptionPane.showInputDialog("Digite sua matrícula"));
+			String _senha = JOptionPane.showInputDialog("Digite sua senha");
+			Aluno aluno_logado = funcoes.logar(_mat, _senha);
+			if (aluno_logado == null) {
+				JOptionPane.showMessageDialog(null, "Falha no login!");
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "ENTRANDO NO SISTEMA COMO" + aluno_logado.getNome());
+			}
+			
 			
 		}
 		
 		if (op == 1) {
+			
+			if (funcoes.cursos_vazios()) {
+				JOptionPane.showMessageDialog(null, "Ainda não existe nenhuma curso cadastrado no sistema. Cadastre um agora mesmo.");
+				
+			
+			}
+			
+			
+			
 			String _nome = JOptionPane.showInputDialog("Digite seu nome");
 			int _matricula = Integer.parseInt(JOptionPane.showInputDialog("Digite sua matrícula"));
 			boolean existe = funcoes.verifica_matricula(_matricula);
 			if (existe) JOptionPane.showMessageDialog(null, "Matrícula já cadastrada!");
 			
 			else {
+				String _senha = JOptionPane.showInputDialog(null, "Digite uma senha para logar no sistema.");
 				Curso curso = funcoes.escolherCurso();
-				Aluno _aluno = new Aluno(_nome, _matricula, curso);
-				
+				Aluno _aluno = new Aluno(_nome, _matricula, _senha, curso);
+				funcoes.addAluno(_aluno);
+				curso.addAluno(_aluno);
 				
 			}
 			
