@@ -53,4 +53,8 @@ public class Disciplina {
 		return text;	
 	}
 	
+	public void addComentario(Comentario _coment) {
+		lista_comentarios.add(_coment);
+	}
+	
 }

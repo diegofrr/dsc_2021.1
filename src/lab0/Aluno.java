@@ -1,10 +1,13 @@
 package lab0;
 
+import java.util.ArrayList;
+
 public class Aluno {
 	
 	private String nome;
 	private int mat;
 	private Curso curso;
+	private ArrayList<Comentario> lista_comentarios = new ArrayList<Comentario>();
 	
 	public Aluno(String nome, int mat, Curso curso) {
 		this.nome = nome;
@@ -34,6 +37,18 @@ public class Aluno {
 	
 	public String toString() {
 		return this.nome + "(" + this.mat + ") - " + this.curso;
+	}
+	
+	public String getComentarios() {
+		String text = "";
+		for (Comentario coment : lista_comentarios) {
+			text += coment.toString() + "\n";
+		}
+		return text;
+	}
+	
+	public void addComentario(Comentario _coment) {
+		lista_comentarios.add(_coment);
 	}
 	
 	

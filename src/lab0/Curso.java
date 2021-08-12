@@ -8,6 +8,7 @@ public class Curso {
 	private String nome;
 	private int id;
 	private ArrayList<Aluno> lista_alunos = new ArrayList<Aluno>();
+	private ArrayList<Disciplina> lista_disciplinas = new ArrayList<Disciplina>();
 	
 	public Curso(String nome, int id) {
 		this.nome = nome;
@@ -46,4 +47,10 @@ public class Curso {
 			}
 		}
 	}
+	
+	
+	public void addDiscplina(Disciplina _disc) {
+		lista_disciplinas.add(_disc);
+	}
+	
 }
