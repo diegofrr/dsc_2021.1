@@ -6,16 +6,18 @@ public class Sistema {
 	static Functions funcoes = new Functions();
 	
 	public static void main(String[]args) {
+		while (true){
+		
 		Object[] opcoes = { "FAZER LOGIN", "SE CADASTRAR"};
-		int op = JOptionPane.showOptionDialog(null, "Bem-vindo!", "OpUnion", JOptionPane.DEFAULT_OPTION, 1, null, opcoes, opcoes[0]);
+		int op = JOptionPane.showOptionDialog(null, "Bem-vindo!", "Sistema de Avaliação de Disciplinas", JOptionPane.DEFAULT_OPTION, 1, null, opcoes, opcoes[0]);
 		
 		if (op == 0) {
-			JOptionPane.showMessageDialog(null, "CLICOU EM LOGAR");
 			int _mat = Integer.parseInt(JOptionPane.showInputDialog("Digite sua matrícula"));
 			String _senha = JOptionPane.showInputDialog("Digite sua senha");
 			Aluno aluno_logado = funcoes.logar(_mat, _senha);
 			if (aluno_logado == null) {
 				JOptionPane.showMessageDialog(null, "Falha no login!");
+				continue;
 			}
 			else {
 				JOptionPane.showMessageDialog(null, "ENTRANDO NO SISTEMA COMO" + aluno_logado.getNome());
@@ -28,8 +30,14 @@ public class Sistema {
 			
 			if (funcoes.cursos_vazios()) {
 				JOptionPane.showMessageDialog(null, "Ainda não existe nenhuma curso cadastrado no sistema. Cadastre um agora mesmo.");
-				
-			
+				String _nome = JOptionPane.showInputDialog("Digite o nome do curso").toUpperCase();
+				int _id = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do curso"));
+				boolean existe = funcoes.verifica_curso(_id);
+				if (existe) {
+					JOptionPane.showMessageDialog(null, "Já existe um curso com o ID " + _id + ".");
+				}else {
+					JOptionPane.showMessageDialog(null, "Curso cadastrado com sucesso!");
+				}
 			}
 			
 			
@@ -51,6 +59,9 @@ public class Sistema {
 			
 			
 			
+		}else {
+			break;
+		}
 		}
 		
 		

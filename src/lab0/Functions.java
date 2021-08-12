@@ -60,9 +60,7 @@ public class Functions {
 			if (a.getMatricula() == mat && a.getSenha() == senha) {
 				return a;
 			}
-		}
-		return null;
-		
+		}return null;
 	}
 	
 	public boolean verifica_curso(int _id) {
