@@ -17,6 +17,8 @@ public class Disciplina {
 		this.likes = 0;
 	}
 	
+	public Disciplina() {}
+	
 	public String getNome() {
 		return this.nome;
 	}
@@ -70,5 +72,6 @@ public class Disciplina {
 	public void addComentario(Comentario _coment) {
 		lista_comentarios.add(_coment);
 	}
+	
 	
 }

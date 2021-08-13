@@ -10,6 +10,18 @@ public class Functions {
 	Menus menu = new Menus();
 	
 	
+	public Disciplina discMaisCurtida() {
+		int maisLikes = 0;
+		Disciplina disc = new Disciplina();
+		for (Disciplina d : database.get_lista_disciplinas()) {
+			if (d.getLikes() > maisLikes) {
+				maisLikes = d.getLikes();
+				disc = d;		
+			}
+		}
+		return disc;
+	}
+	
 	public Curso escolherCurso() {
 		ArrayList<Curso> listaCursos = database.get_lista_cursos();
 		Object[] cursos = new Object[listaCursos.size()];
