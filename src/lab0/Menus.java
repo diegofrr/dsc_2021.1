@@ -2,7 +2,7 @@ package lab0;
 
 import javax.swing.JOptionPane;
 
-public class Menu {
+public class Menus {
 	
 	public int menuPrincipal() {
 		while (true){
