@@ -34,7 +34,7 @@ public class Functions {
 		ArrayList<Disciplina> listaDisc = database.get_lista_disciplinas();
 		Object[] disciplinas = new Object[listaDisc.size()];
 		for (int k = 0; k < listaDisc.size(); k++) { disciplinas[k] = listaDisc.get(k); }
-		Object valorSelecionado = JOptionPane.showInputDialog(null, "Escolha o curso", "Opção", JOptionPane.INFORMATION_MESSAGE, null, disciplinas, disciplinas[0]);
+		Object valorSelecionado = JOptionPane.showInputDialog(null, "Escolha a disciplina", "Opção", JOptionPane.INFORMATION_MESSAGE, null, disciplinas, disciplinas[0]);
 		return (Disciplina) valorSelecionado;
 	}
 	
@@ -68,8 +68,9 @@ public class Functions {
 		database.get_lista_alunos().add(_a);
 	}
 	
-	public void addDisciplina(Disciplina _d) {
+	public void addDisciplina(Disciplina _d, Curso _c) {
 		database.get_lista_disciplinas().add(_d);
+		_c.getDisciplinas().add(_d);
 	}
 	
 	public Aluno logar(int mat, String senha){
@@ -83,6 +84,22 @@ public class Functions {
 	public boolean verifica_curso(int _id) {
 		for (Curso c : database.get_lista_cursos()) {
 			if (c.getId() == _id) {
+				return true;
+			}
+		}return false;
+	}
+	
+	public String listarDisciplinas(Curso curso) {
+		String listaStr = "";
+		for (Disciplina d : curso.getDisciplinas()) {
+			listaStr += d.toString() + "\n";
+		}
+		return listaStr;
+	}
+	
+	public boolean verificaIdDisciplina(int id) {
+		for (Disciplina d : database.get_lista_disciplinas()) {
+			if (d.getId() == id) {
 				return true;
 			}
 		}return false;

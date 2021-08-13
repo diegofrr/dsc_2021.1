@@ -26,6 +26,52 @@ public class Sistema {
 				JOptionPane.showMessageDialog(null, "Bem vindo,  " + aluno_logado.getNome().split(" ")[0] + "!");
 				
 				int opc = funcoes.menu.menuPrincipal();
+				
+				if (opc == 1) { //ADD DISCIPLINA
+					
+					String nome = JOptionPane.showInputDialog("Nome da disciplina");
+					int id = Integer.parseInt(JOptionPane.showInputDialog("ID da disciplina"));
+					if (funcoes.disciplinas_vazias()) {
+						Curso curso = funcoes.escolherCurso();
+						Disciplina disc = new Disciplina(nome, id, curso);
+						funcoes.addDisciplina(disc, curso);
+						JOptionPane.showMessageDialog(null, "Disciplina cadastrada com sucesso");
+						continue;
+					}else {
+						if (funcoes.verificaIdDisciplina(id)) {
+							JOptionPane.showMessageDialog(null, "Já existe uma disciplina com esse ID");
+						}else {
+							Curso curso = funcoes.escolherCurso();
+							Disciplina disc = new Disciplina(nome, id, curso);
+							funcoes.addDisciplina(disc, curso);
+							JOptionPane.showMessageDialog(null, "Disciplina cadastrada com sucesso");
+							continue;
+						}
+					}
+					
+				}
+				
+				//AVALIAR DISC
+				else if (opc == 3) {
+					if (funcoes.disciplinas_vazias()) {
+						JOptionPane.showMessageDialog(null, "Não há disciplinas cadastradas no sistema.");
+						continue;
+					}
+				
+				}
+					
+				else if(opc == 3) {
+					// VER TODAS AVALIACOES
+				}
+				
+				else if (opc == 4) {
+					// MINHAS AVAL
+				}
+					
+				else {
+					//SAIR DO SISTEMA
+				}
+				
 				JOptionPane.showMessageDialog(null, opc);
 				
 			}

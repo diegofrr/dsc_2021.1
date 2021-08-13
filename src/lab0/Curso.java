@@ -31,6 +31,10 @@ public class Curso {
 		this.id = _id;
 	}
 	
+	public ArrayList<Disciplina> getDisciplinas(){
+		return this.lista_disciplinas;
+	}
+	
 	public ArrayList<Aluno> getAlunos(){
 		return lista_alunos;
 	}
@@ -49,7 +53,7 @@ public class Curso {
 	}
 	
 	
-	public void addDiscplina(Disciplina _disc) {
+	public void addDiscplinas(Disciplina _disc) {
 		lista_disciplinas.add(_disc);
 	}
 	
