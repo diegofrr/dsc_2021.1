@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 public class Functions {
 	
 	Base database = new Base();
+	Menu menu = new Menu();
 	
 	
 	public Curso escolherCurso() {

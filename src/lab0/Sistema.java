@@ -7,6 +7,8 @@ public class Sistema {
 	
 	public static void main(String[]args) {
 		
+		Aluno aluno_logado;
+		
 		while (true){
 		
 		Object[] opcoes = { "FAZER LOGIN", "SE CADASTRAR"};
@@ -15,13 +17,17 @@ public class Sistema {
 		if (op == 0) {
 			int _mat = Integer.parseInt(JOptionPane.showInputDialog("Digite sua matrícula"));
 			String _senha = JOptionPane.showInputDialog("Digite sua senha");
-			Aluno aluno_logado = funcoes.logar(_mat, _senha);
+			aluno_logado = funcoes.logar(_mat, _senha);
 			if (aluno_logado == null) {
 				JOptionPane.showMessageDialog(null, "Falha no login!");
 				continue;
 			}
 			else {
 				JOptionPane.showMessageDialog(null, "Bem vindo,  " + aluno_logado.getNome().split(" ")[0] + "!");
+				
+				int opc = funcoes.menu.menuPrincipal();
+				JOptionPane.showMessageDialog(null, opc);
+				
 			}
 			
 			
