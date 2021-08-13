@@ -21,7 +21,7 @@ public class Sistema {
 				continue;
 			}
 			else {
-				JOptionPane.showMessageDialog(null, "ENTRANDO NO SISTEMA COMO" + aluno_logado.getNome());
+				JOptionPane.showMessageDialog(null, "Bem vindo,  " + aluno_logado.getNome().split(" ")[0] + "!");
 			}
 			
 			

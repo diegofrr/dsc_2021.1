@@ -17,6 +17,14 @@ public class Functions {
 		return (Curso) valorSelecionado;	
 	}
 	
+	public Disciplina escolherDisciplina() {
+		ArrayList<Disciplina> listaDisc = database.get_lista_disciplinas();
+		Object[] disciplinas = new Object[listaDisc.size()];
+		for (int k = 0; k < listaDisc.size(); k++) { disciplinas[k] = listaDisc.get(k); }
+		Object valorSelecionado = JOptionPane.showInputDialog(null, "Escolha o curso", "Opção", JOptionPane.INFORMATION_MESSAGE, null, disciplinas, disciplinas[0]);
+		return (Disciplina) valorSelecionado;
+	}
+	
 	public boolean alunos_vazios() {
 		if (database.get_lista_alunos().size() == 0) {
 			return true;
@@ -53,7 +61,7 @@ public class Functions {
 	
 	public Aluno logar(int mat, String senha){
 		for (Aluno a : database.get_lista_alunos()) {
-			if (a.getMatricula() == mat && a.getSenha() == senha) {
+			if (a.getMatricula() == mat && a.getSenha().equals(senha)) {
 				return a;
 			}
 		}return null;

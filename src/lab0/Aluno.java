@@ -46,7 +46,7 @@ public class Aluno {
 	}
 	
 	public String toString() {
-		return this.nome + "(" + this.mat + ") - " + this.curso;
+		return this.nome + " (" + this.mat + ") - " + this.curso;
 	}
 	
 	public String getComentarios() {

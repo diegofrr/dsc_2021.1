@@ -9,8 +9,9 @@ public class Base {
 	
 	
 	public Base() {
-		Curso c = new Curso("SISTEMAS DE INFORMAÇÃO", 111); lista_cursos.add(c);
-		Curso c2 = new Curso("CIÊNCIA DA COMPUTAÇÃO", 222); lista_cursos.add(c2);
+		Curso SI = new Curso("SISTEMAS DE INFORMAÇÃO", 111); lista_cursos.add(SI);
+		Curso LCC = new Curso("CIÊNCIA DA COMPUTAÇÃO", 222); lista_cursos.add(LCC);
+		Aluno a = new Aluno("Diêgo Ferreira", 00000, "admin123", SI); lista_alunos.add(a);
 	}
 	
 	
