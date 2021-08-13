@@ -53,4 +53,13 @@ public class Curso {
 		lista_disciplinas.add(_disc);
 	}
 	
+	public String toString() {
+		return this.nome;
+
+	}
+	
+	public String toStringAll() {
+		return this.nome + "(" + this.id + ")";
+	}
+	
 }

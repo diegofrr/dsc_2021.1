@@ -7,12 +7,14 @@ public class Disciplina {
 	private String nome;
 	private int id;
 	private Curso curso;
+	private int likes;
 	private ArrayList<Comentario> lista_comentarios = new ArrayList<Comentario>();
 	
 	public Disciplina(String nome, int id, Curso curso) {
 		this.nome = nome;
 		this.id = id;
 		this.curso = curso;
+		this.likes = 0;
 	}
 	
 	public String getNome() {
@@ -29,6 +31,18 @@ public class Disciplina {
 	
 	public void setId(int _id) {
 		this.id = _id;
+	}
+	
+	public int getLikes() {
+		return this.likes;
+	}
+	
+	public void addLike() {
+		this.likes += 1;
+	}
+	
+	public void removeLike() {
+		this.likes -= 1;
 	}
 	
 	public Curso getCurso() {

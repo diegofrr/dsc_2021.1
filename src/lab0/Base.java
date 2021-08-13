@@ -7,6 +7,13 @@ public class Base {
 	private ArrayList<Aluno> lista_alunos = new ArrayList<Aluno>();
 	private ArrayList<Disciplina> lista_disciplinas = new ArrayList<Disciplina>();
 	
+	
+	public Base() {
+		Curso c = new Curso("SISTEMAS DE INFORMAÇÃO", 111); lista_cursos.add(c);
+		Curso c2 = new Curso("CIÊNCIA DA COMPUTAÇÃO", 222); lista_cursos.add(c2);
+	}
+	
+	
 	public ArrayList<Curso> get_lista_cursos(){
 		return lista_cursos;
 	}

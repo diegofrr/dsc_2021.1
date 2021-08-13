@@ -13,7 +13,7 @@ public class Functions {
 		ArrayList<Curso> listaCursos = database.get_lista_cursos();
 		Object[] cursos = new Object[listaCursos.size()];
 		for (int k = 0; k < listaCursos.size(); k++) { cursos[k] = listaCursos.get(k); }
-		Object valorSelecionado = JOptionPane.showInputDialog(null, "Curso", "Opção", JOptionPane.INFORMATION_MESSAGE, null, cursos, cursos[0]);
+		Object valorSelecionado = JOptionPane.showInputDialog(null, "Escolha o curso", "Opção", JOptionPane.INFORMATION_MESSAGE, null, cursos, cursos[0]);
 		return (Curso) valorSelecionado;	
 	}
 	
@@ -45,10 +45,6 @@ public class Functions {
 	
 	public void addAluno(Aluno _a) {
 		database.get_lista_alunos().add(_a);
-	}
-	
-	public void addCurso(Curso _c) {
-		database.get_lista_cursos().add(_c);
 	}
 	
 	public void addDisciplina(Disciplina _d) {
