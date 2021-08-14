@@ -58,9 +58,10 @@ public class Aluno {
 		return this.nome + " (" + this.mat + ") - " + this.curso;
 	}
 	
-	public ArrayList<Comentario> comentarios(){
+	public ArrayList<Comentario> getComentarios(){
 		return this.lista_comentarios;
 	}
+
 	
 	public void addComentario(Comentario _coment) {
 		lista_comentarios.add(_coment);

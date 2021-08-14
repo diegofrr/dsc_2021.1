@@ -68,5 +68,12 @@ public class Disciplina {
 		lista_comentarios.add(_coment);
 	}
 	
-	
+	public Comentario comentarioAluno(Aluno _a) {
+		for (Comentario c : this.lista_comentarios) {
+			if (c.getAutor() == _a) {
+				return c;
+			}
+		}
+		return null;
+	}
 }

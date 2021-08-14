@@ -1,11 +1,16 @@
 package lab0;
 
+import java.time.LocalDate;
+
 import javax.swing.JOptionPane;
 public class Sistema {
 	
 	static Functions funcoes = new Functions();
 	
 	public static void main(String[]args) {
+		
+		JOptionPane.showMessageDialog(null, LocalDate.now().toString());
+		
 		
 		Aluno aluno_logado;
 		boolean sair = false;
@@ -62,7 +67,37 @@ public class Sistema {
 					}
 					
 					Disciplina discAvaliar = funcoes.escolherDisciplina();
+					if (funcoes.verificaAvaliou(aluno_logado, discAvaliar)) {
+						int opcao = JOptionPane.showConfirmDialog(null, "Você já deixou um comentário sobre esta disciplina\n"
+								+ "Comentário: " + discAvaliar.comentarioAluno(aluno_logado).getTexto() + "\n"
+								+ "Dataa: " + discAvaliar.comentarioAluno(aluno_logado).getData() + "\n\n"
+								+ "Deseja retirá-lo?", null, JOptionPane.YES_NO_OPTION);
+						
+						if (opcao == JOptionPane.YES_OPTION) {funcoes.removeComentario(aluno_logado, discAvaliar);}
+						else {continue;}
+					}else {
+						//CASO NÃO TENHA DEIXADO COMENTÁRIO
+						String comentario = JOptionPane.showInputDialog("Comentário");
+						String data = LocalDate.now().toString();
+						Comentario _c = new Comentario(aluno_logado, comentario, data);
+						funcoes.addComentario(aluno_logado, discAvaliar, _c);
+						JOptionPane.showMessageDialog(null, "Comentário adicionado com sucesso!");
+						
+					}
 					
+					if (funcoes.verificaGostou(aluno_logado, discAvaliar)) {
+						
+						int opcao = JOptionPane.showConfirmDialog(null, "Você já deixou o like nesta disciplina\n"
+								+ "Deseja retirá-lo?", null, JOptionPane.YES_NO_OPTION);
+						if (opcao == JOptionPane.YES_OPTION) {funcoes.removeLike(aluno_logado, discAvaliar);}
+						
+					} else {
+						int deixarLike = JOptionPane.showConfirmDialog(null, "Deseja deixar o like nesta disciplina?", null, JOptionPane.YES_NO_OPTION);
+						if (deixarLike == JOptionPane.YES_NO_OPTION) {discAvaliar.addLike();}
+						else if (deixarLike == JOptionPane.NO_OPTION) {continue;}
+						else {continue;}
+					
+					}
 				
 				}
 					
@@ -78,8 +113,7 @@ public class Sistema {
 						JOptionPane.showMessageDialog(null, "Esta disciplina ainda não tem nenhum comentário");
 					}
 					
-					funcoes.comentariosStr(_d);
-					JOptionPane.showMessageDialog(null, "Curtidas: " + _d.getLikes() + "\n"
+					JOptionPane.showMessageDialog(null, "Curtidas: " + _d.getLikes() + "\n\n"
 							+ "Comentários: \n"
 							+ funcoes.comentariosStr(_d));
 					

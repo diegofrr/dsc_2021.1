@@ -136,4 +136,17 @@ public class Functions {
 		
 	}
 	
+	public void removeComentario(Aluno _a, Disciplina _d) {
+		for (Comentario c : _d.getComentarios()) {
+			if (c.getAutor() == _a) {
+				_d.getComentarios().remove(c);
+			}
+		}
+	}
+	
+	public void addComentario(Aluno _a, Disciplina _d, Comentario _c) {
+		_a.addComentario(_c);
+		_d.addComentario(_c);
+	}
+	
 }
