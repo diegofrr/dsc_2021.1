@@ -8,8 +8,8 @@ public class Sistema {
 	public static void main(String[]args) {
 		
 		Aluno aluno_logado;
-		
-		while (true){
+		boolean sair = false;
+		while (sair == false){
 		
 		Object[] opcoes = { "FAZER LOGIN", "SE CADASTRAR"};
 		int op = JOptionPane.showOptionDialog(null, "Bem-vindo!", "Sistema de Avaliação de Disciplinas", JOptionPane.DEFAULT_OPTION, 1, null, opcoes, opcoes[0]);
@@ -25,6 +25,9 @@ public class Sistema {
 			else {
 				JOptionPane.showMessageDialog(null, "Bem vindo,  " + aluno_logado.getNome().split(" ")[0] + "!");
 				
+				boolean deslogar = false;
+				while (deslogar == false) {
+					
 				int opc = funcoes.menu.menuPrincipal();
 				
 				if (opc == 1) { //ADD DISCIPLINA
@@ -52,16 +55,34 @@ public class Sistema {
 				}
 				
 				//AVALIAR DISC
-				else if (opc == 3) {
+				else if (opc == 2) {
 					if (funcoes.disciplinas_vazias()) {
-						JOptionPane.showMessageDialog(null, "Não há disciplinas cadastradas no sistema.");
+						JOptionPane.showMessageDialog(null, "Ainda não há disciplinas cadastradas no sistema.");
 						continue;
 					}
+					
+					Disciplina discAvaliar = funcoes.escolherDisciplina();
+					
 				
 				}
 					
-				else if(opc == 3) {
-					// VER TODAS AVALIACOES
+				else if(opc == 3) { //VER TODAS AVALIAÇÕES
+					if(funcoes.disciplinas_vazias()) {
+						JOptionPane.showMessageDialog(null, "Ainda não há disciplinas cadastradas no sistema.");
+						continue;
+					}
+					
+					Disciplina _d = funcoes.escolherDisciplina();
+					
+					if(_d.getComentarios().size() == 0) {
+						JOptionPane.showMessageDialog(null, "Esta disciplina ainda não tem nenhum comentário");
+					}
+					
+					funcoes.comentariosStr(_d);
+					JOptionPane.showMessageDialog(null, "Curtidas: " + _d.getLikes() + "\n"
+							+ "Comentários: \n"
+							+ funcoes.comentariosStr(_d));
+					
 				}
 				
 				else if (opc == 4) {
@@ -69,17 +90,19 @@ public class Sistema {
 				}
 					
 				else {
+					JOptionPane.showMessageDialog(null, "Deslogando...");
+					deslogar = true;
+					op = 3;
 					//SAIR DO SISTEMA
 				}
 				
-				JOptionPane.showMessageDialog(null, opc);
 				
 			}
 			
-			
+			}
 		}
 		
-		if (op == 1) {		
+		else if (op == 1) {		
 			String _nome = JOptionPane.showInputDialog("Digite seu nome");
 			int _matricula = Integer.parseInt(JOptionPane.showInputDialog("Digite sua matrícula"));
 			boolean existe = funcoes.verifica_matricula(_matricula);
@@ -96,9 +119,10 @@ public class Sistema {
 			}
 			
 			
-			
-			
-		}else {
+		}else if(op == 2) {
+			sair = true;
+		}
+		else {
 			break;
 		}
 		}

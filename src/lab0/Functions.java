@@ -105,5 +105,35 @@ public class Functions {
 		}return false;
 	}
 	
+	public String comentariosStr(Disciplina d) {
+		String comentariosStr = "";
+		for (Comentario c : d.getComentarios()) {
+			comentariosStr += c.toString();
+		}
+		return comentariosStr;
+	}
+	
+	public boolean verificaAvaliou(Aluno _a, Disciplina _d) {
+		for (Comentario c : _d.getComentarios()) {
+			if (c.getAutor() == _a) {
+				return true;
+			}
+		}return false;
+	}
+	
+	public boolean verificaGostou(Aluno _a, Disciplina _d) {
+		for (Disciplina disc : _a.getLista_UPs()) {
+			if (disc == _d) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public void removeLike(Aluno _a, Disciplina _d) {
+		_d.removeLike();
+		_a.removeLike(_d);
+		
+	}
 	
 }

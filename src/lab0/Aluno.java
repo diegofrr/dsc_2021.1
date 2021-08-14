@@ -9,6 +9,7 @@ public class Aluno {
 	private String senha;
 	private Curso curso;
 	private ArrayList<Comentario> lista_comentarios = new ArrayList<Comentario>();
+	private ArrayList<Disciplina> lista_UPs = new ArrayList<Disciplina>();
 	
 	public Aluno(String nome, int mat, String senha, Curso curso) {
 		this.nome = nome;
@@ -45,16 +46,20 @@ public class Aluno {
 		return this.curso;
 	}
 	
+	public ArrayList<Disciplina> getLista_UPs(){
+		return this.lista_UPs;
+	}
+	
+	public void removeLike(Disciplina _d) {
+		this.getLista_UPs().remove(_d);
+	}
+	
 	public String toString() {
 		return this.nome + " (" + this.mat + ") - " + this.curso;
 	}
 	
-	public String getComentarios() {
-		String text = "";
-		for (Comentario coment : lista_comentarios) {
-			text += coment.toString() + "\n";
-		}
-		return text;
+	public ArrayList<Comentario> comentarios(){
+		return this.lista_comentarios;
 	}
 	
 	public void addComentario(Comentario _coment) {

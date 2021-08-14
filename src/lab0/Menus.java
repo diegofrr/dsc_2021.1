@@ -13,7 +13,12 @@ public class Menus {
 					+ "4. MINHAS AVALIAÇÕES\n"
 					+ "5. SAIR");
 			
-			if (!op.equals("1") && !op.equals("2") && !op.equals("3") && !op.equals("4") && !op.equals("5")) {
+			
+			if (op == null) {
+				return 5;
+			}
+			
+			else if (!op.equals("1") && !op.equals("2") && !op.equals("3") && !op.equals("4") && !op.equals("5")) {
 				JOptionPane.showMessageDialog(null, "OPÇÃO INVÁLIDA!");
 			}else {
 				return Integer.parseInt(op);

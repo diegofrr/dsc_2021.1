@@ -57,16 +57,11 @@ public class Disciplina {
 	}
 	
 	public String toString() {
-		return "Disciplina: " + this.nome + "(" + this.id + ") - " + this.curso;
+		return this.nome + " (" + this.id + ") - " + this.curso + " (↑" + this.likes + ")";
 	}
 	
-	public String getComentarios() {
-		String text = "";
-		
-		for (Comentario coments : lista_comentarios) {
-			text += coments.toString() + "\n";
-		}
-		return text;	
+	public ArrayList<Comentario> getComentarios() {
+		return this.lista_comentarios;
 	}
 	
 	public void addComentario(Comentario _coment) {
