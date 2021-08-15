@@ -59,7 +59,7 @@ public class Sistema {
 					
 				}
 				
-				//AVALIAR DISC
+				//Avaliar uma disciplina
 				else if (opc == 2) {
 					if (funcoes.disciplinas_vazias()) {
 						JOptionPane.showMessageDialog(null, "Ainda não há disciplinas cadastradas no sistema.");
@@ -79,7 +79,7 @@ public class Sistema {
 						if (opcao == JOptionPane.YES_OPTION) {funcoes.removeComentario(aluno_logado, discAvaliar);}
 						else {continue;}
 					}else {
-						//CASO NÃO TENHA DEIXADO COMENTÁRIO
+
 						String comentario = JOptionPane.showInputDialog("Comentário");
 						String data = LocalDate.now().toString();
 						Comentario _c = new Comentario(aluno_logado, comentario, data);
@@ -104,7 +104,7 @@ public class Sistema {
 				
 				}
 					
-				else if(opc == 3) { //VER TODAS AVALIAÇÕES
+				else if(opc == 3) { //Avaliações de todos os alunos numa determinada disciplina
 					if(funcoes.disciplinas_vazias()) {
 						JOptionPane.showMessageDialog(null, "Ainda não há disciplinas cadastradas no sistema.");
 						continue;
@@ -123,8 +123,7 @@ public class Sistema {
 							+ funcoes.comentariosNaDisciplinaStr(_d));
 					
 				}
-				// MINHAS AVAL
-				else if (opc == 4) {
+				else if (opc == 4) {//Todas avaliações do aluno logado
 					int opcao = funcoes.menu.menuAvaliacoes();
 					
 					if (opcao == 1) {
@@ -145,11 +144,10 @@ public class Sistema {
 					}
 				}
 					
-				else {
+				else {//Saindo do sistema
 					JOptionPane.showMessageDialog(null, "Deslogando...");
 					deslogar = true;
 					op = 3;
-					//SAIR DO SISTEMA
 				}
 				
 				
