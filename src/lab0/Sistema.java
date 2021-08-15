@@ -73,7 +73,7 @@ public class Sistema {
 					if (funcoes.verificaAvaliou(aluno_logado, discAvaliar)) {
 						int opcao = JOptionPane.showConfirmDialog(null, "Você já deixou um comentário sobre esta disciplina\n"
 								+ "Comentário: " + discAvaliar.comentarioAluno(aluno_logado).getTexto() + "\n"
-								+ "Dataa: " + discAvaliar.comentarioAluno(aluno_logado).getData() + "\n\n"
+								+ "Data: " + discAvaliar.comentarioAluno(aluno_logado).getData() + "\n\n"
 								+ "Deseja retirá-lo?", null, JOptionPane.YES_NO_OPTION);
 						
 						if (opcao == JOptionPane.YES_OPTION) {funcoes.removeComentario(aluno_logado, discAvaliar);}
@@ -132,7 +132,7 @@ public class Sistema {
 							JOptionPane.showMessageDialog(null, "Você ainda não comentou em nenhuma disciplina");
 							continue;
 						}
-						JOptionPane.showMessageDialog(null, funcoes.comentariosDoAluno(aluno_logado));
+						JOptionPane.showMessageDialog(null, "Você comentou em " + aluno_logado.getComentarios().size() + " disciplinas.\n\n" + funcoes.comentariosDoAluno(aluno_logado));
 					}
 					else if (opcao == 2) {
 						if (aluno_logado.getLista_UPs().size() == 0) {

@@ -32,7 +32,7 @@ public class Comentario {
 	}
 	
 	public String toString() {
-		return this.autor + "\n" + this.texto;
+		return this.autor + " (" + this.data + ")"+ "\n" + this.texto;
 	}
 
 }

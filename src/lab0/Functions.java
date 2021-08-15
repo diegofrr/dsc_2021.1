@@ -163,9 +163,16 @@ public class Functions {
 	
 	public String comentariosDoAluno(Aluno _a) {
 		String txt = "";
-		for (Comentario c : _a.getComentarios()) {
-			txt += c.getTexto();
-		}
-		return txt;
+		for (Disciplina d : database.get_lista_disciplinas()) {
+			for (Comentario c : d.getComentarios()) {
+				if (c.getAutor().equals(_a)) {
+					txt += d.getNome()  + " (" + d.getId() + ") -  " + c.getData() + "\n"
+							+ "Comentário: " + c.getTexto() + "\n\n";
+				}
+			}
+			
+		}return txt;
+		
 	}
+		
 }
