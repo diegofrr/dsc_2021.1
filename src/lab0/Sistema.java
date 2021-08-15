@@ -8,10 +8,7 @@ public class Sistema {
 	static Functions funcoes = new Functions();
 	
 	public static void main(String[]args) {
-		
-		JOptionPane.showMessageDialog(null, LocalDate.now().toString());
-		
-		
+
 		Aluno aluno_logado;
 		boolean sair = false;
 		while (sair == false){
@@ -20,6 +17,9 @@ public class Sistema {
 		int op = JOptionPane.showOptionDialog(null, "Bem-vindo!", "Sistema de Avaliação de Disciplinas", JOptionPane.DEFAULT_OPTION, 1, null, opcoes, opcoes[0]);
 		
 		if (op == 0) {
+			
+			if(funcoes.alunos_vazios()) {JOptionPane.showMessageDialog(null, "Não há cadastros no sistema.\n"); continue;}
+			
 			int _mat = Integer.parseInt(JOptionPane.showInputDialog("Digite sua matrícula"));
 			String _senha = JOptionPane.showInputDialog("Digite sua senha");
 			aluno_logado = funcoes.logar(_mat, _senha);
