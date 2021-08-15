@@ -67,6 +67,9 @@ public class Sistema {
 					}
 					
 					Disciplina discAvaliar = funcoes.escolherDisciplina();
+					
+					if (discAvaliar == null) {continue;}
+					
 					if (funcoes.verificaAvaliou(aluno_logado, discAvaliar)) {
 						int opcao = JOptionPane.showConfirmDialog(null, "Você já deixou um comentário sobre esta disciplina\n"
 								+ "Comentário: " + discAvaliar.comentarioAluno(aluno_logado).getTexto() + "\n"
@@ -93,7 +96,7 @@ public class Sistema {
 						
 					} else {
 						int deixarLike = JOptionPane.showConfirmDialog(null, "Deseja deixar o like nesta disciplina?", null, JOptionPane.YES_NO_OPTION);
-						if (deixarLike == JOptionPane.YES_NO_OPTION) {discAvaliar.addLike();}
+						if (deixarLike == JOptionPane.YES_NO_OPTION) {funcoes.addLike(aluno_logado, discAvaliar);;}
 						else if (deixarLike == JOptionPane.NO_OPTION) {continue;}
 						else {continue;}
 					
@@ -108,19 +111,38 @@ public class Sistema {
 					}
 					
 					Disciplina _d = funcoes.escolherDisciplina();
+					if(_d == null) {continue;}
 					
 					if(_d.getComentarios().size() == 0) {
 						JOptionPane.showMessageDialog(null, "Esta disciplina ainda não tem nenhum comentário");
+						continue;
 					}
 					
 					JOptionPane.showMessageDialog(null, "Curtidas: " + _d.getLikes() + "\n\n"
 							+ "Comentários: \n"
-							+ funcoes.comentariosStr(_d));
+							+ funcoes.comentariosNaDisciplinaStr(_d));
 					
 				}
-				
+				// MINHAS AVAL
 				else if (opc == 4) {
-					// MINHAS AVAL
+					int opcao = funcoes.menu.menuAvaliacoes();
+					
+					if (opcao == 1) {
+						if (aluno_logado.getComentarios().size() == 0) {
+							JOptionPane.showMessageDialog(null, "Você ainda não comentou em nenhuma disciplina");
+							continue;
+						}
+						JOptionPane.showMessageDialog(null, funcoes.comentariosDoAluno(aluno_logado));
+					}
+					else if (opcao == 2) {
+						if (aluno_logado.getLista_UPs().size() == 0) {
+							JOptionPane.showMessageDialog(null, "Você ainda não deixou like em nenhuma diciplina");
+							continue;
+						}
+						JOptionPane.showMessageDialog(null, funcoes.disciplinasCurtidas(aluno_logado));
+					}else {
+						continue;
+					}
 				}
 					
 				else {

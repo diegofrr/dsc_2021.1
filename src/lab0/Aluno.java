@@ -50,6 +50,8 @@ public class Aluno {
 		return this.lista_UPs;
 	}
 	
+	
+	
 	public void removeLike(Disciplina _d) {
 		this.getLista_UPs().remove(_d);
 	}

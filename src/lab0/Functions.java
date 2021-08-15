@@ -105,7 +105,7 @@ public class Functions {
 		}return false;
 	}
 	
-	public String comentariosStr(Disciplina d) {
+	public String comentariosNaDisciplinaStr(Disciplina d) {
 		String comentariosStr = "";
 		for (Comentario c : d.getComentarios()) {
 			comentariosStr += c.toString();
@@ -149,4 +149,23 @@ public class Functions {
 		_d.addComentario(_c);
 	}
 	
+	public void addLike(Aluno _a, Disciplina _d) {
+		_a.getLista_UPs().add(_d);
+		_d.addLike();
+	}
+	
+	public String disciplinasCurtidas(Aluno _a) {
+		String txt = "";
+		for (Disciplina d : _a.getLista_UPs()) {
+			txt += d.toString();
+		}return txt;
+	}
+	
+	public String comentariosDoAluno(Aluno _a) {
+		String txt = "";
+		for (Comentario c : _a.getComentarios()) {
+			txt += c.getTexto();
+		}
+		return txt;
+	}
 }
