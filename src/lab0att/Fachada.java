@@ -61,6 +61,47 @@ public class Fachada {
 		d.getComentarios().add(c);
 		d.setNota(nota);
 		d.addAvaliacao();
+		database.getListaComentarios().add(c);
+		
+	}
+	
+	public Disciplina buscaDisciplina(int id) {
+		for (Disciplina d : database.getListaDisciplinas()) {
+			if (d.getId() == id) {
+				return d;
+			}
+		}return null;
+	}
+	
+	public String diciplinasMaisVotadas() {
+		String txt = "";
+		ArrayList<Disciplina> disc = database.getListaDisciplinas();
+		double maiorNota = 0.0;
+		for (Disciplina d : disc) {
+			if (d.getNota() >= maiorNota) {
+				maiorNota = d.getNota();
+				txt += d.toString() + "\n";
+				disc.remove(d);
+			}
+		}return txt;
+		
+	}
+	
+	public Comentario buscaComentario(int id) {
+		for (Comentario c : database.getListaComentarios()) {
+			if (c.getId() == id) {
+				return c;
+			}
+		}return null;
+	}
+	
+	public void removeComentario(Comentario c) {
+		for (Disciplina d : database.getListaDisciplinas()) {
+			if (d.getComentarios().contains(c)) {
+				d.removeComentario(c);
+				database.removeComentario(c);
+			}
+		}
 	}
 	
 }

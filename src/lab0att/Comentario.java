@@ -1,16 +1,18 @@
 package lab0att;
 
+import java.time.LocalDate;
+
 public class Comentario {
 	private String texto;
 	private int id;
 	private Aluno autor;
 	private String data;
 	
-	public Comentario(String texto, int id, Aluno autor, String data) {
+	public Comentario(String texto, int id, Aluno autor) {
 		this.texto = texto;
 		this.id = id;
 		this.autor = autor;
-		this.data = data;
+		this.data = LocalDate.now().toString();
 	}
 
 	public String getTexto() {

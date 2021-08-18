@@ -14,6 +14,7 @@ public class Disciplina {
 	public Disciplina(String nome, int id) {
 		this.id = id;
 		this.nome = nome;
+		
 	}
 	
 	public String getNome() {
@@ -62,6 +63,10 @@ public class Disciplina {
 	
 	public ArrayList<Comentario> getComentarios(){
 		return this.listaComentarios;
+	}
+	
+	public void removeComentario(Comentario c) {
+		this.listaComentarios.remove(c);
 	}
 
 }

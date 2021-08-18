@@ -18,15 +18,16 @@ public class Menus {
 					+ "2. VER DISCIPLINAS\n"
 					+ "3. AVALIAR DISCIPLINA\n"
 					+ "4. ATUALIZAR NOME DA DISCIPLINA\n"
-					+ "5. MINHAS AVALIAÇÕES\n"
-					+ "6. SAIR");
+					+ "5. REMOVER COMENTÁRIO\n"
+					+ "6. VER RANKING DAS DISCIPLINAS\n"
+					+ "7. SAIR");
 			
 			
 			if (op == null) {
-				return 5;
+				return 7;
 			}
 			
-			else if (!op.equals("1") && !op.equals("2") && !op.equals("3") && !op.equals("4") && !op.equals("5")) {
+			else if (!op.equals("1") && !op.equals("2") && !op.equals("3") && !op.equals("4") && !op.equals("5") && !op.equals("6") && !op.equals("7")) {
 				JOptionPane.showMessageDialog(null, "Opção inválida!");
 			}else {
 				return Integer.parseInt(op);

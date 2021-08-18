@@ -11,7 +11,11 @@ public class Database {
 	
 	public Database() {
 		Aluno a = new Aluno("Diêgo Ferreira", "diego", "123"); this.getListaAlunos().add(a);
-		Disciplina d = new Disciplina("POO", 11111); this.getListaDisciplinas().add(d);
+		Disciplina d;
+		d = new Disciplina("POO", 11111); this.listaDisciplinas.add(d);
+		d = new Disciplina("BANCO DE DADOS", 22222); this.listaDisciplinas.add(d);
+		d = new Disciplina("REDES", 33333); this.listaDisciplinas.add(d);
+		
 	}
 	
 	public ArrayList<Aluno> getListaAlunos() {
@@ -24,6 +28,10 @@ public class Database {
 
 	public ArrayList<Comentario> getListaComentarios() {
 		return listaComentarios;
+	}
+	
+	public void removeComentario(Comentario c) {
+		this.getListaComentarios().remove(c);
 	}
 
 	
