@@ -15,8 +15,6 @@ public class Sistema {
 		Fachada funcoes = new Fachada();
 		Aluno alunoLogado;
 		
-		JOptionPane.showMessageDialog(null, funcoes.rankingDisciplina());
-		
 		boolean sair = false;
 		while(sair == false) {
 			
@@ -143,7 +141,7 @@ public class Sistema {
 
 							
 						}else if (opcaoSecundaria == 6) {
-							JOptionPane.showMessageDialog(null, "a");
+							JOptionPane.showMessageDialog(null, "Ainda não implementado");
 							
 							
 						}else if(opcaoSecundaria == 7) {
