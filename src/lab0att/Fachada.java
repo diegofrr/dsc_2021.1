@@ -39,7 +39,7 @@ public class Fachada {
 		ArrayList<Disciplina> listaDisc = database.getListaDisciplinas();
 		Object[] disciplinas = new Object[listaDisc.size()];
 		for (int k = 0; k < listaDisc.size(); k++) { disciplinas[k] = listaDisc.get(k); }
-		Object valorSelecionado = JOptionPane.showInputDialog(null, "Escolha a disciplina", "Opção", JOptionPane.INFORMATION_MESSAGE, null, disciplinas, disciplinas[0]);
+		Object valorSelecionado = JOptionPane.showInputDialog(null, "Escolha a disciplina", "OpÃ§Ã£o", JOptionPane.INFORMATION_MESSAGE, null, disciplinas, disciplinas[0]);
 		return (Disciplina) valorSelecionado;
 	}
 	
@@ -73,19 +73,6 @@ public class Fachada {
 		}return null;
 	}
 	
-	public String diciplinasMaisVotadas() {
-		String txt = "";
-		ArrayList<Disciplina> disc = database.getListaDisciplinas();
-		double maiorNota = 0.0;
-		for (Disciplina d : disc) {
-			if (d.getNota() >= maiorNota) {
-				maiorNota = d.getNota();
-				txt += d.toString() + "\n";
-				disc.remove(d);
-			}
-		}return txt;
-		
-	}
 	
 	public Comentario buscaComentario(int id) {
 		for (Comentario c : database.getListaComentarios()) {
@@ -103,5 +90,13 @@ public class Fachada {
 			}
 		}
 	}
+	
+	public String likes() {
+		String text = "";
+		for (Disciplina d : database.getListaDisciplinas()) {
+			text += d.getLikes() + "\n";
+		}return text;
+	}
+	
 	
 }
